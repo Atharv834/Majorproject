@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanderlust</title>
 </head>
+<style>
 
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    </style>
 <body>
 
 
@@ -15,7 +22,7 @@
     <h3> Listing details :</h3>
     <ul>
       
-            <li><%= listing.title %></li>
+            <li><b>Name</b> : <%= listing.title %></li>
             <li><b>Description</b> :<%= listing.description %></li> 
                           <!-- redirecting to the link to view each in detail -->
             <li>&#8377 <%= listing.price.toLocaleString("en-IN") %> /-</li>  
@@ -26,6 +33,6 @@
     </ul>
     <br>
 
-    <a href="/listings/<%= listing._id %>/edit"> Edit this listings </a>
+    <button><a href="/listings/<%= listing._id %>/edit"> Edit this listings </a></button>
 </body>
 </html>
