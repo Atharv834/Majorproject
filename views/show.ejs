@@ -33,8 +33,12 @@
     </ul>
     <br>
 
-    <button><a href="/listings/<%= listing._id %>/edit"> Edit this listings </a></button>
+    <!-- Editing the page by passing the given id and the going to edit page and the submit  -->
+    <button><a href="/listings/<%= listing._id %>/edit"> Edit this listings </a></button>  
     <br> <br>
+
+    <!-- creating a post request for delete and update operation and the writing at last the using the method=DELETE   -->
+
     <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
         <button> Delete this listing </button>
     </form>

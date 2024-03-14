@@ -9,7 +9,6 @@ app.listen(3000, (req, res) => {
     console.log("Running on port 3000");
 });
 
-
 main()
     .then(() => console.log("Connection successful! to DB !"))
     .catch(err => console.log(err));
@@ -27,7 +26,7 @@ app.use(methodOverride("_method"));
 /*________BASICS SETUP DONE !_____________________________________________________________________________*/
 
 app.get("/", (req, res) => {
-    res.send("hello root!");
+    res.send("Welcome to Wanderlust !");
 });
 
 
@@ -103,8 +102,8 @@ app.put("/listings/:id/",async (req,res)=>{
 //deleting any route 
 
 app.delete("/listings/:id/",async(req,res)=>{
-    let { id } = req.params; 
-    let deletedListing =  await Listing.findByIdAndDelete(id);
+    let { id } = req.params;           //taking the id paramter from the req.params 
+    let deletedListing =  await Listing.findByIdAndDelete(id);   //deleting the particular listing of given id 
     console.log(deletedListing);
     res.redirect("/listings");
 });

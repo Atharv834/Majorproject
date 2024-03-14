@@ -8,8 +8,10 @@
 </head>
 <style>
 
+   /* writing for no decoration and no underline ,no blueline on the anchor tag  */
+
     a{
-        text-decoration: none;
+        text-decoration: none;   
         color: inherit;
     }
     
@@ -26,10 +28,8 @@
     <ul>
         <% for (let listing of alllistings) { %>
             <hr>
-
-            <li><a href="/listings/<%= listing._id %>">
-                    <%= listing.title%>
-                </a></li> <!-- redirecting to the link to view each in detail -->
+             
+            <li><a href="/listings/<%= listing._id %>"><%= listing.title%> </a></li> <!-- redirecting to the link to view each in detail -->
             <br>
             <% } %>
     </ul>
