@@ -50,7 +50,7 @@ app.get("/",(req,res)=>{
 
 // });
 
-app.get("/listings",async (req,res)=>{
+app.get("/listings",async (req,res)=>{    // allows to view all the lists available on the db 
     const alllistings = await Listing.find({});
     res.render("index.ejs",{alllistings});
 });
@@ -60,6 +60,6 @@ app.get("/listings",async (req,res)=>{
 
 app.get("/listings/:id",async (req,res)=>{
     let {id}= req.params;  //write the extended:true for this 
-    const listing = await Listing.findById(id);
+    const listing = await Listing.findById(id);  // finds the individual by id such as /listings/:id 
     res.render("show.ejs",{listing:listing});
 });
