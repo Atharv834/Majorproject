@@ -14,7 +14,6 @@
 
     <h3> Listing details :</h3>
     <ul>
-<<<<<<< HEAD
       
             <li><%= listing.title %></li>
             <li><b>Description</b> :<%= listing.description %></li> 
@@ -24,28 +23,9 @@
             <li> <b>Location</b> :<%= listing.location %></li>
             <li><b>Country</b> :<%= listing.country %></li>   
       
-=======
-
-        <li>
-            <%= listing.title %>
-        </li>
-        <li><b>Description</b> :<%= listing.description %>
-        </li>
-        <!-- redirecting to the link to view each in detail -->
-        <li>&#8377 <%= listing.price.toLocaleString("en-IN") %> /-</li>
-        <!-- &#8377 depits the rupee symbol anf toLocaleString function tells to give commas after a proper nukber such as 5,000 -->
-        <li> <b>Location</b> :<%= listing.location %>
-        </li>
-        <li><b>Country</b> :<%= listing.country %>
-        </li>
-
->>>>>>> eb313e4 (Add new route)
     </ul>
+    <br>
 
+    <a href="/listings/<%= listing._id %>/edit"> Edit this listings </a>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-
-</html>
->>>>>>> eb313e4 (Add new route)
