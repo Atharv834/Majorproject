@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanderlust</title>
 </head>
+
 <body>
-   
+
 
     <!-- making the page for showing the each and every post in detailed manner by its id -->
 
     <h3> Listing details :</h3>
     <ul>
+<<<<<<< HEAD
       
             <li><%= listing.title %></li>
             <li><b>Description</b> :<%= listing.description %></li> 
@@ -21,7 +24,28 @@
             <li> <b>Location</b> :<%= listing.location %></li>
             <li><b>Country</b> :<%= listing.country %></li>   
       
+=======
+
+        <li>
+            <%= listing.title %>
+        </li>
+        <li><b>Description</b> :<%= listing.description %>
+        </li>
+        <!-- redirecting to the link to view each in detail -->
+        <li>&#8377 <%= listing.price.toLocaleString("en-IN") %> /-</li>
+        <!-- &#8377 depits the rupee symbol anf toLocaleString function tells to give commas after a proper nukber such as 5,000 -->
+        <li> <b>Location</b> :<%= listing.location %>
+        </li>
+        <li><b>Country</b> :<%= listing.country %>
+        </li>
+
+>>>>>>> eb313e4 (Add new route)
     </ul>
-    
+
 </body>
+<<<<<<< HEAD
 </html>
+=======
+
+</html>
+>>>>>>> eb313e4 (Add new route)
