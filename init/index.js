@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const initiData = require("./data.js");
+const initData = require("./data.js");
 const Listing= require("../models/list.js")
 
 main()
@@ -13,10 +13,14 @@ async function main() {
 
 /* basics done */
 
-const initDB = async ()=>{
-    await Listing.deleteMany({});  // used to dlete all the items inserted before the inserted data as we insert many items for testing
-    await Listing.insertMany(initiData.data);
-    console.log("Data was initialiased !");
-};
-
-initDB();
+async function initDB() {
+    try {
+      await Listing.deleteMany({});
+      await Listing.insertMany(initData.data);
+      console.log("Data was initialiased!");
+    } catch (err) {
+      console.error("Error initializing data:", err);
+    }
+  }
+  
+  initDB();

@@ -1,3 +1,5 @@
+/* run  this index.js file when to insert the data into to the database */ 
+
 const sampleListings = [
   {
     title: "Cozy Beachfront Cottage",

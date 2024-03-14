@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust</title>
+</head>
+<body>
+    <h3>All listings</h3>
+
+   
+    <ul>
+        <% for (let listing of alllistings) { %>
+            <hr>
+            <li><%= listing.title %></li>
+            <li><a  href="/listings/<%= listing._id %>" ><%= listing.description %> </a></li>               <!-- redirecting to the link to view each in detail -->
+            <br>
+        <% } %>
+    </ul>
+  
+</body>
+</html>
