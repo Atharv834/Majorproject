@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Listing = require("./models/list.js")
 const path = require("path");
 const methodOverride = require("method-override");  //used for editing the requests and posting it again
+const ejsMate = require("ejs-mate");   // reqruing from the webiste 
 
 app.listen(3000, (req, res) => {
     console.log("Running on port 3000");
@@ -21,6 +22,9 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));  //to use id feature the req.params one 
 app.use(methodOverride("_method"));
+app.engine('ejs', ejsMate);   //install npm i ejs-mate and then require 
+app.use(express.static(path.join(__dirname,"/public")));  //to use the static file scuh as css 
+
 
 
 /*________BASICS SETUP DONE !_____________________________________________________________________________*/
