@@ -1,25 +1,38 @@
-<% layout("/layouts/boilerplate")  %> 
+<% layout("/layouts/boilerplate") %>
 
-<!-- taking the common content from the biolerplate.ejs file to render it here instead of writing all html code  -->
+    <!-- taking the common content from the biolerplate.ejs file to render it here instead of writing all html code  -->
 
-    
 
-<body>
-    <h3>All listings</h3>
 
-    <!-- <form method="GET" action="/listings/new">
+    <body>
+        <h3>All listings</h3>
+
+        <!-- <form method="GET" action="/listings/new">
         <button> Create new listings</button>
     </form> -->
 
-    <!-- no need of this as now its written in navbar.ejs file in button  -->
+        <!-- no need of this as now its written in navbar.ejs file in button  -->
 
-    <ul>
-        <% for (let listing of alllistings) { %>
-           
-             
-            <li><a href="/listings/<%= listing._id %>"><%= listing.title%> </a></li> <!-- redirecting to the link to view each in detail -->
-           
-            <% } %>
-    </ul>
+        <div class="row row-cols-lg-3">
 
-</body>
+            <% for (let listing of alllistings){ %>
+                <a href="/listings/<%= listing._id %>" class="listing-link">
+                    <div class="card" style="width:20rem">
+                        <img src="<%= listing.image %>" class="card-img-top"  style="height:20rem"/>
+                        <div class="card-img-overlay"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                               <b> <%= listing.title %></b> <br />
+                                    &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
+                            </p>
+                        </div>
+                    </div>
+                    <% } %>
+                </a>
+               
+        </div>
+
+
+
+
+    </body>

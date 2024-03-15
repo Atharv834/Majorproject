@@ -1,6 +1,7 @@
-/* body{
-    background-color: pink;
-} */
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+
+}
 
 
 
@@ -56,3 +57,34 @@
 
     
  }
+
+.card{
+    border:none !important; 
+    margin: 1rem;
+    flex-wrap: nowrap;
+   
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-text p{
+    font-weight: 400 !important; 
+}
+
+.listing-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-img-overlay{
+    opacity: 0; 
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white ;
+}
