@@ -1,32 +1,24 @@
 <% layout("/layouts/boilerplate")  %> 
 
 <!-- taking the common content from the biolerplate.ejs file to render it here instead of writing all html code  -->
-<style>
 
-
-   /* writing for no decoration and no underline ,no blueline on the anchor tag  */
-
-    a{
-        text-decoration: none;   
-        color: inherit;
-    }
     
-    </style>
 
 <body>
     <h3>All listings</h3>
 
-    <form method="GET" action="/listings/new">
+    <!-- <form method="GET" action="/listings/new">
         <button> Create new listings</button>
-    </form>
+    </form> -->
 
+    <!-- no need of this as now its written in navbar.ejs file in button  -->
 
     <ul>
         <% for (let listing of alllistings) { %>
-            <hr>
+           
              
             <li><a href="/listings/<%= listing._id %>"><%= listing.title%> </a></li> <!-- redirecting to the link to view each in detail -->
-            <br>
+           
             <% } %>
     </ul>
 
