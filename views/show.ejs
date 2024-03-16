@@ -1,32 +1,56 @@
-<% layout("/layouts/boilerplate")  %> 
+<% layout("/layouts/boilerplate") %>
+    <div class="row">
 
-<body>
+        <div class="col-8 offset-1 ">
+
+            <body>
+
+                <br><br>
+
+                <!-- Displaying the details of the listing -->
+
+                <h3> Listing details :</h3>
+
+                <div class="card">
+                    <img class="card-img-top show-img" src="<%= listing.image %>" alt="listing_image" />
+
+                    <br><br>
+                
+
+                    <ul>
+                        <li><b>Name</b>: <%= listing.title %>
+                        </li>
+                        <li><b>Description</b>: <%= listing.description %>
+                        </li>
+                        <li>&#8377 <%= listing.price.toLocaleString("en-IN") %> /-</li>
+                        <li><b>Location</b>: <%= listing.location %>
+                        </li>
+                        <li><b>Country</b>: <%= listing.country %>
+                        </li>
+                    </ul>
+                    <br>
+
+                    <div class="button">
+
+                        <!-- Link to edit the listing -->
+                        <button class="btn btn-dark add-btn edit"> <a href="/listings/<%= listing._id %>/edit"> Edit
+                                this listing </a></button>
+                        <br> <br>
+
+                        <!-- Form to delete the listing -->
+                        <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
+                            <button class="btn btn-dark"> Delete this listing </button>
+                        </form>
 
 
-    <!-- making the page for showing the each and every post in detailed manner by its id -->
+                    </div>
 
-    <h3> Listing details :</h3>
-    <ul>
-      
-            <li><b>Name</b> : <%= listing.title %></li>
-            <li><b>Description</b> :<%= listing.description %></li> 
-                          <!-- redirecting to the link to view each in detail -->
-            <li>&#8377 <%= listing.price.toLocaleString("en-IN") %> /-</li>  
-                          <!-- &#8377 depits the rupee symbol anf toLocaleString function tells to give commas after a proper nukber such as 5,000 -->
-            <li> <b>Location</b> :<%= listing.location %></li>
-            <li><b>Country</b> :<%= listing.country %></li>   
-      
-    </ul>
-    <br>
 
-    <!-- Editing the page by passing the given id and the going to edit page and the submit  -->
-    <button><a href="/listings/<%= listing._id %>/edit"> Edit this listings </a></button>  
-    <br> <br>
+                </div>
 
-    <!-- creating a post request for delete and update operation and the writing at last the using the method=DELETE   -->
+            </body>
 
-    <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
-        <button> Delete this listing </button>
-    </form>
 
-</body>
+        </div>
+
+    </div>
