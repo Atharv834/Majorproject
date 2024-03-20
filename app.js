@@ -5,10 +5,9 @@ const Listing = require("./models/list.js")
 const path = require("path");
 const methodOverride = require("method-override");  //used for editing the requests and posting it again
 const ejsMate = require("ejs-mate");   // reqruing from the webiste 
+const ExpressError = require("./ExpressError");
 
-app.listen(3000, (req, res) => {
-    console.log("Running on port 3000");
-});
+
 
 main()
     .then(() => console.log("Connection successful! to DB !"))
@@ -28,6 +27,9 @@ app.use(express.static(path.join(__dirname,"/public")));  //to use the static fi
 
 
 /*________BASICS SETUP DONE !_____________________________________________________________________________*/
+
+
+
 
 app.get("/", (req, res) => {
     res.send("Welcome to Wanderlust !");
@@ -55,9 +57,16 @@ app.get("/", (req, res) => {
 
 // });
 
-app.get("/listings", async (req, res) => {    // allows to view all the lists available on the db 
-    const alllistings = await Listing.find({});
-    res.render("index.ejs", { alllistings });
+app.get("/listings", async (req, res) => { // allows to view all the lists available on the db 
+
+    try{
+        const alllistings = await Listing.find({});
+        res.render("index.ejs", { alllistings });
+    }
+    catch(err){
+      next(err);
+    }
+   
 });
 
 
@@ -71,44 +80,94 @@ app.get("/listings/new", async (req, res) => {
 
 app.post("/listings/", async (req, res) => {
 /* method 1    let {title ,description ,image , price ,location ,country } = req.body      //taking anything from thr html form contains the information part in the req.body   */
-  const newListing = new Listing(req.body.listing);  // extracting the object from the html form of new.ejs then saving to db
-  await newListing.save();
-  res.redirect("/listings");  //redirecting succcessfully after the information is stored 
-
+   
+try{
+    const newListing = new Listing(req.body.listing);  // extracting the object from the html form of new.ejs then saving to db
+    await newListing.save();
+    res.redirect("/listings");  //redirecting succcessfully after the information is stored 
+  
+}
+catch(err){
+    next(err);
+}
+  
 });
 
 
 // show route 
 
 app.get("/listings/:id", async (req, res) => {
-    let { id } = req.params;  //write the extended:true for this 
-    const listing = await Listing.findById(id);  // finds the individual by id such as /listings/:id 
-    res.render("show.ejs", { listing: listing });
+
+    try{
+        let { id } = req.params;  //write the extended:true for this 
+        const listing = await Listing.findById(id);  // finds the individual by id such as /listings/:id 
+
+        if (!listing){
+            next(new ExpressError(500,"Hotels doesnt exists !"));
+        }
+        res.render("show.ejs", { listing: listing });
+    }
+
+    catch(err){
+        next(err);
+    }
+        
 });
 
 // edit route    get- /listings/:id/edit  =>  put /listings/:id
 
 app.get("/listings/:id/edit",async (req,res)=>{
-    let { id } = req.params;  //write the extended:true for this 
-    const listing = await Listing.findById(id);  // finds the individual by id such as /listings/:id 
-    res.render("edit.ejs",{listing});
+
+    try{/*  Express error inherits the properties from the default 
+    error class used in express    */
+        let { id } = req.params;  //write the extended:true for this 
+        const listing = await Listing.findById(id);  // finds the individual by id such as /listings/:id 
+        res.render("edit.ejs",{listing});
+    }
+    catch(err){
+        next(err);
+    }
+   
 });
 
 //update  route 
 
 app.put("/listings/:id/",async (req,res)=>{
-    let { id } = req.params;  //write the extended:true for this 
-    await Listing.findByIdAndUpdate(id ,{...req.body.listing});
-    res.redirect(`/listings/${id}`);
+    try {
+        let { id } = req.params;  //write the extended:true for this 
+        await Listing.findByIdAndUpdate(id ,{...req.body.listing});
+        res.redirect(`/listings/${id}`);
+    }
+    catch (err){
+        next(err);
+    }
+    
 });
 
 
 //deleting any route 
 
 app.delete("/listings/:id/",async(req,res)=>{
-    let { id } = req.params;           //taking the id paramter from the req.params 
-    let deletedListing =  await Listing.findByIdAndDelete(id);   //deleting the particular listing of given id 
-    console.log(deletedListing);
-    res.redirect("/listings");
+
+    try{
+        let { id } = req.params;           //taking the id paramter from the req.params 
+        let deletedListing =  await Listing.findByIdAndDelete(id);   //deleting the particular listing of given id 
+        console.log(deletedListing);
+        res.redirect("/listings");
+    }
+    catch(err){
+        next(err);
+    }
+   
 });
 
+app.use((err,req,res,next)=>{
+    let {status = 500,message = "Access denied "} = err;
+    res.status(status).send(message);
+  //using middlewares for handling the error 
+});
+
+
+app.listen(3000, (req, res) => {
+    console.log("Running on port 3000");
+});
