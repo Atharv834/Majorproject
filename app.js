@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 
 // });
 
-app.get("/listings", async (req, res) => { // allows to view all the lists available on the db 
+app.get("/listings", async (req, res,next) => { // allows to view all the lists available on the db 
 
     try{
         const alllistings = await Listing.find({});
@@ -78,25 +78,23 @@ app.get("/listings/new", async (req, res) => {
 
 //creating the post requesitng after submutting the lisitngs 
 
-app.post("/listings/", async (req, res) => {
+app.post("/listings/", async (req, res,next) => {
 /* method 1    let {title ,description ,image , price ,location ,country } = req.body      //taking anything from thr html form contains the information part in the req.body   */
    
-try{
+
+
     const newListing = new Listing(req.body.listing);  // extracting the object from the html form of new.ejs then saving to db
     await newListing.save();
     res.redirect("/listings");  //redirecting succcessfully after the information is stored 
   
-}
-catch(err){
-    next(err);
-}
+
   
 });
 
 
 // show route 
 
-app.get("/listings/:id", async (req, res) => {
+app.get("/listings/:id", async (req, res,next) => {
 
     try{
         let { id } = req.params;  //write the extended:true for this 
@@ -116,7 +114,7 @@ app.get("/listings/:id", async (req, res) => {
 
 // edit route    get- /listings/:id/edit  =>  put /listings/:id
 
-app.get("/listings/:id/edit",async (req,res)=>{
+app.get("/listings/:id/edit",async (req,res,next)=>{
 
     try{/*  Express error inherits the properties from the default 
     error class used in express    */
@@ -132,7 +130,7 @@ app.get("/listings/:id/edit",async (req,res)=>{
 
 //update  route 
 
-app.put("/listings/:id/",async (req,res)=>{
+app.put("/listings/:id/",async (req,res,next)=>{
     try {
         let { id } = req.params;  //write the extended:true for this 
         await Listing.findByIdAndUpdate(id ,{...req.body.listing});
@@ -147,7 +145,7 @@ app.put("/listings/:id/",async (req,res)=>{
 
 //deleting any route 
 
-app.delete("/listings/:id/",async(req,res)=>{
+app.delete("/listings/:id/",async(req,res,next)=>{
 
     try{
         let { id } = req.params;           //taking the id paramter from the req.params 
