@@ -3,6 +3,7 @@ A easier version of airbnb website
 
 
 After cloning the repository go to the folder type below 
+npm init -y
 npm i nodemon 
 npm i express
 npm i ejs
