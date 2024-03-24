@@ -1,4 +1,10 @@
+<div align='center'>
 
+<h1>Airbnb like copy clone </h1>
+<h4> <span> · </span> <a href="https://github.com/atharv834/Major project /blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/atharv834/Major project /issues"> Report Bug </a> <span> · </span> <a href="https://github.com/atharv834/Major project /issues"> Request Feature </a> </h4>
+
+
+</div>
 
 # :notebook_with_decorative_cover: Table of Contents
 
@@ -11,6 +17,10 @@
 <li><a href="">Mongodb</a></li>
 </ul> </details>
 
+### :dart: Features
+- Add or Delete listings
+
+
 ## :toolbox: Getting Started
 
 ### :gear: Installation
@@ -18,6 +28,27 @@
 To install nodemon, ejs, ejs-mate, mongoose, and express, navigate to your project directory in the terminal or command prompt and run:
 ```bash
 npm install nodemon ejs ejs-mate mongoose express
+```
+
+
+### :running: Run Locally
+
+Clone the project
+
+```bash
+https://github.com/Atharv834/Majorproject
+```
+Go to project Directory
+```bash
+cd /majorproject
+```
+Check all technologies are installed or not
+```bash
+node -v , mongosh ,
+```
+Run and host the website
+```bash
+nodemon app.js
 ```
 
 
