@@ -1,14 +1,28 @@
-Full major project USING html ,css ,js ,ejs ,mongodb ,express ,nodemon ,mongoose 
-A easier version of airbnb website 
 
 
-After cloning the repository go to the folder type below 
-npm init -y
-npm i nodemon 
-npm i express
-npm i ejs
-npm i ejs-mate
-npm i mongoose 
-npm i method-override 
+# :notebook_with_decorative_cover: Table of Contents
 
-the Run the nodemon app.js
+- [About the Project](#star2-about-the-project)
+- [Contact](#handshake-contact)
+
+
+## :star2: About the Project
+<details> <summary>Database</summary> <ul>
+<li><a href="">Mongodb</a></li>
+</ul> </details>
+
+## :toolbox: Getting Started
+
+### :gear: Installation
+
+To install nodemon, ejs, ejs-mate, mongoose, and express, navigate to your project directory in the terminal or command prompt and run:
+```bash
+npm install nodemon ejs ejs-mate mongoose express
+```
+
+
+## :handshake: Contact
+
+Atharv Rokade - - atharv04@duck.com
+
+Project Link: [https://github.com/Atharv834/Majorproject](https://github.com/Atharv834/Majorproject)
