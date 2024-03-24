@@ -47,9 +47,8 @@ app.get("/", (req, res) => {
 //        country:"India ",
 //     });
 
-//     sampleListing.save()
-//     .then(() => {
-//         console.log("Sample saved");
+mongoose.connect('mongodb://127.0.0.1:27017/test')
+  .then(() => console.log('Connected!'));mple saved");
 //     })
 //     .catch((err) => {
 //         console.error("Error saving sample:", err);
@@ -81,13 +80,10 @@ app.get("/listings/new", async (req, res) => {
 app.post("/listings/", async (req, res,next) => {
 /* method 1    let {title ,description ,image , price ,location ,country } = req.body      //taking anything from thr html form contains the information part in the req.body   */
    
-
-
     const newListing = new Listing(req.body.listing);  // extracting the object from the html form of new.ejs then saving to db
     await newListing.save();
     res.redirect("/listings");  //redirecting succcessfully after the information is stored 
   
-
   
 });
 
@@ -161,7 +157,8 @@ app.delete("/listings/:id/",async(req,res,next)=>{
 
 app.use((err,req,res,next)=>{
     let {status = 500,message = "Access denied "} = err;
-    res.status(status).send(message);
+    res.render("error.ejs" ,{message});
+    // res.status(status).send(message);
   //using middlewares for handling the error 
 });
 
