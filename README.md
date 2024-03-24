@@ -40,7 +40,7 @@ https://github.com/Atharv834/Majorproject
 ```
 Go to project Directory
 ```bash
-cd /majorproject
+cd /Majorproject
 ```
 Check all technologies are installed or not
 ```bash
