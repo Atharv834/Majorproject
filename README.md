@@ -1,7 +1,7 @@
 <div align='center'>
 
 <h1>Airbnb like copy clone </h1>
-<h4> <span> · </span> <a href="https://github.com/atharv834/Major project /blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/atharv834/Major project /issues"> Report Bug </a> <span> · </span> <a href="https://github.com/atharv834/Major project /issues"> Request Feature </a> </h4>
+<h4> <span> · </span> <a href="https://github.com/atharv834/Major project /blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/atharv834/Wanderlust /issues"> Report Bug </a> <span> · </span> <a href="https://github.com/atharv834/Wanderlust /issues"> Request Feature </a> </h4>
 
 
 </div>
@@ -36,11 +36,11 @@ npm install nodemon ejs ejs-mate mongoose express
 Clone the project
 
 ```bash
-https://github.com/Atharv834/Majorproject
+https://github.com/Atharv834/Wanderlust
 ```
 Go to project Directory
 ```bash
-cd /Majorproject
+cd /Wanderlust
 ```
 Check all technologies are installed or not
 ```bash
@@ -56,4 +56,4 @@ nodemon app.js
 
 Atharv Rokade - - atharv04@duck.com
 
-Project Link: [https://github.com/Atharv834/Majorproject](https://github.com/Atharv834/Majorproject)
+Project Link: [https://github.com/Atharv834/Wanderlust](https://github.com/Atharv834/Wanderlust)
