@@ -18,7 +18,7 @@
 </ul> </details>
 
 ### :camera: Screenshots
-<div align="center"> <a href=""><img src="https://drive.google.com/drive/folders/1cqwSeqxIcLyK59AJ_o3gSYNOszWUiBtg?usp=sharing" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://drive.google.com/drive/folders/1cqwSeqxIcLyK59AJ_o3gSYNOszWUiBtg?usp=sharing"><img src="[https://drive.google.com/drive/folders/1cqwSeqxIcLyK59AJ_o3gSYNOszWUiBtg?usp=sharing](https://images.pexels.com/photos/414781/pexels-photo-414781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)" alt='image' width='800'/></a> </div>
 
 ### :dart: Features
 - Add or Delete listings
