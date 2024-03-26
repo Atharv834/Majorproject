@@ -7,6 +7,9 @@ const methodOverride = require("method-override");  //used for editing the reque
 const ejsMate = require("ejs-mate");   // reqruing from the webiste 
 const ExpressError = require("./ExpressError");
 
+const Review = require("./models/reviews.js")
+
+
 
 
 main()
@@ -45,16 +48,16 @@ app.get("/", (req, res) => {
 //        price:5000,
 //        location:"Mumbai ",
 //        country:"India ",
-//     });
+//     });submit-review"
 
-mongoose.connect('mongodb://127.0.0.1:27017/test')
-  .then(() => console.log('Connected!'));mple saved");
-//     })
-//     .catch((err) => {
-//         console.error("Error saving sample:", err);
-//     });
+// mongoose.connect('mongodb://127.0.0.1:27017/test')
+//   .then(() => console.log('Connected!'));mple saved");
+// //     })
+// //     .catch((err) => {
+// //         console.error("Error saving sample:", err);
+// //     });
 
-// });
+// // });
 
 app.get("/listings", async (req, res,next) => { // allows to view all the lists available on the db 
 
@@ -108,7 +111,7 @@ app.get("/listings/:id", async (req, res,next) => {
         
 });
 
-// edit route    get- /listings/:id/edit  =>  put /listings/:id
+// edit route    get- /listingssubmit-review"/:id/edit  =>  put /listings/:id
 
 app.get("/listings/:id/edit",async (req,res,next)=>{
 
@@ -154,6 +157,29 @@ app.delete("/listings/:id/",async(req,res,next)=>{
     }
    
 });
+
+
+/* Review route */ 
+
+app.post("/listings/:id/reviews", async (req, res,next) => {
+
+    try{
+        let listing = await Listing.findById(req.params.id);
+        let newReview = new Review(req.body.review);
+     
+        listing.reviews.push(newReview);
+     
+        await newReview.save();
+        await listing.save();
+     
+        res.send("Review Saved !");
+    }
+    catch(err){
+        next(err);
+    }
+    
+ });
+ 
 
 app.use((err,req,res,next)=>{
     let {status = 500,message = "Access denied "} = err;
