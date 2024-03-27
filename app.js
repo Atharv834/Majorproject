@@ -161,7 +161,7 @@ app.delete("/listings/:id/",async(req,res,next)=>{
 
 /* Review route */ 
 
-app.post("/listings/:id/reviews", async (req, res,next) => {
+app.post("/listings/:id/reviews", async (req,res,next) => {
 
     try{
         let listing = await Listing.findById(req.params.id);
@@ -173,6 +173,7 @@ app.post("/listings/:id/reviews", async (req, res,next) => {
         await listing.save();
      
         res.send("Review Saved !");
+        res.redirect("/listings/:id");
     }
     catch(err){
         next(err);
