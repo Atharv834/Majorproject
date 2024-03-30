@@ -6,6 +6,8 @@ const path = require("path");
 const methodOverride = require("method-override");  //used for editing the requests and posting it again
 const ejsMate = require("ejs-mate");   // reqruing from the webiste 
 const ExpressError = require("./ExpressError");
+const cookieParser = require("cookie-parser");
+
 
 
 
@@ -29,14 +31,28 @@ app.use(express.static(path.join(__dirname,"/public")));  //to use the static fi
 /*________BASICS SETUP DONE !_____________________________________________________________________________*/
 
 
+    //COOKIE  -----------
+app.use(cookieParser());   //cookie-parser middleware and the cookie can be acceced through req.cookie 
+
 app.get("/cookie",(req,res)=>{
     res.cookie("MADEIn","Bharat");    /* Setting the name value pair from server side you can see it in the console network tab  */
     res.cookie("Proud to be ", "Indian");
+    res.send("hello cookie");
    
 });
 
+app.get("/greet", (req, res) => {
+    console.log(req.cookies);
+    let {MADEIn="Anony0u$"}= req.cookies;
+    res.send(`hello ${MADEIn} how are you`);
+});
+
+
+// COOOKIE X-X-X-X-X-X-X-X-X-X--
+
 app.get("/", (req, res) => {
-    res.send("Welcome to Wanderlust !");
+        res.send("Welcome to Wanderlust !");
+
 });
 
 
