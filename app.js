@@ -7,9 +7,6 @@ const methodOverride = require("method-override");  //used for editing the reque
 const ejsMate = require("ejs-mate");   // reqruing from the webiste 
 const ExpressError = require("./ExpressError");
 
-const Review = require("./models/reviews.js")
-
-
 
 
 main()
@@ -32,7 +29,11 @@ app.use(express.static(path.join(__dirname,"/public")));  //to use the static fi
 /*________BASICS SETUP DONE !_____________________________________________________________________________*/
 
 
-
+app.get("/cookie",(req,res)=>{
+    res.cookie("MADEIn","Bharat");    /* Setting the name value pair from server side you can see it in the console network tab  */
+    res.cookie("Proud to be ", "Indian");
+   
+});
 
 app.get("/", (req, res) => {
     res.send("Welcome to Wanderlust !");
