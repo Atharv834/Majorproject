@@ -8,6 +8,7 @@ const ejsMate = require("ejs-mate");   // reqruing from the webiste
 const ExpressError = require("./ExpressError");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const flash= require("connect-flash");
 
 
 
@@ -38,6 +39,7 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
+app.use(flash());
 
 
 
@@ -89,6 +91,14 @@ app.get("/", (req, res) => {
 
 // // });
 
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.updated = req.flash("updated");
+    next();
+})
+
 app.get("/listings", async (req, res,next) => { // allows to view all the lists available on the db 
 
     try{
@@ -115,6 +125,7 @@ app.post("/listings/", async (req, res,next) => {
    
     const newListing = new Listing(req.body.listing);  // extracting the object from the html form of new.ejs then saving to db
     await newListing.save();
+    req.flash("success","new Listings created !");
     res.redirect("/listings");  //redirecting succcessfully after the information is stored 
   
   
@@ -163,6 +174,7 @@ app.put("/listings/:id/",async (req,res,next)=>{
     try {
         let { id } = req.params;  //write the extended:true for this 
         await Listing.findByIdAndUpdate(id ,{...req.body.listing});
+        req.flash("updated","Listing Updated !");
         res.redirect(`/listings/${id}`);
     }
     catch (err){
@@ -180,6 +192,7 @@ app.delete("/listings/:id/",async(req,res,next)=>{
         let { id } = req.params;           //taking the id paramter from the req.params 
         let deletedListing =  await Listing.findByIdAndDelete(id);   //deleting the particular listing of given id 
         console.log(deletedListing);
+        req.flash("error","Listing deleted successfully !");
         res.redirect("/listings");
     }
     catch(err){
