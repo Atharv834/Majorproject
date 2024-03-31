@@ -1,59 +1,65 @@
-<% layout("/layouts/boilerplate")  %> <% updated %>
+<% layout("/layouts/boilerplate") %>
+    <% updated %>
 
-<!-- use form label class for labels and form-control for input parameters -->
+        <!-- use form label class for labels and form-control for input parameters -->
 
-<body>
+        <body>
 
-    <br><br>
+            <br><br>
 
-    <h3> Edit your Listing </h3>
-    <br>
-
-    <div class="main">
-
-
-        <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
-
-            <div > 
-                <label class="form-label"> Enter the new :<title></title></label>
-                <input type="text" name="listing[title]" value="<%= listing.title %>" class="form-control" required><br>
-            </div>
-
-            <div >
-                <label class="form-label"> new Description :<title></title></label>
-                <textarea name="listing[description]" class="form-control" required><%= listing.description %></textarea><br>
-            </div>
-
-            <div >
-                <label class="form-label"> Enter image link :<title></title></label>
-                <input type="text" name="listing[image]" value="<%= listing.image %> " class="form-control"  required><br>
-            </div>
-
-
-            <div >
-                <label class="form-label"> new Price :<title></title></label>
-                <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control" required><br>
-            </div>
-
-            <div >
-                <label class="form-label"> Enter location :<title></title></label>
-                <input type="text" name="listing[location]" value="<%= listing.location %>" class="form-control" required><br>
-
-            </div>
-
-            <div >
-                <label class="form-label"> Enter country  :<title></title></label>
-                <input type="text" name="listing[country]" value="<%= listing.country %>" class="form-control" required><br><br>
-
-            </div>
-            <button type="submit" class="btn btn-dark add-btn">Done Editing </button>
+            <h3> Edit your Listing </h3>
             <br>
-        </form>
-        <br>
+
+            <div class="main">
 
 
-    </div>
-   
+                <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
 
-</body>
+                    <div>
+                        <label class="form-label"> Enter the new :<title></title></label>
+                        <input type="text" name="listing[title]" value="<%= listing.title %>" class="form-control"
+                            required><br>
+                    </div>
 
+                    <div>
+                        <label class="form-label"> new Description :<title></title></label>
+                        <textarea name="listing[description]" class="form-control"
+                            required><%= listing.description %></textarea><br>
+                    </div>
+
+                    <div>
+                        <label class="form-label"> Enter image link :<title></title></label>
+                        <input type="text" name="listing[image]" value="<%= listing.image %> " class="form-control"
+                            required><br>
+                    </div>
+
+
+                    <div>
+                        <label class="form-label"> new Price :<title></title></label>
+                        <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control"
+                            required><br>
+                    </div>
+
+                    <div>
+                        <label class="form-label"> Enter location :<title></title></label>
+                        <input type="text" name="listing[location]" value="<%= listing.location %>" class="form-control"
+                            required><br>
+
+                    </div>
+
+                    <div>
+                        <label class="form-label"> Enter country :<title></title></label>
+                        <input type="text" name="listing[country]" value="<%= listing.country %>" class="form-control"
+                            required><br><br>
+
+                    </div>
+                    <button type="submit" class="btn btn-dark add-btn">Done Editing </button>
+                    <br>
+                </form>
+                <br>
+
+
+            </div>
+
+
+        </body>
