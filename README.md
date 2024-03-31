@@ -22,6 +22,7 @@
 
 ### :dart: Features
 - Add or Delete listings
+- Code written with comments for better understandings 
 
 
 ## :toolbox: Getting Started
