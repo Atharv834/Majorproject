@@ -7,7 +7,7 @@ const methodOverride = require("method-override");  //used for editing the reque
 const ejsMate = require("ejs-mate");   // reqruing from the webiste 
 const ExpressError = require("./ExpressError");
 const cookieParser = require("cookie-parser");
-
+const session = require("express-session");
 
 
 
@@ -25,6 +25,19 @@ app.use(express.urlencoded({ extended: true }));  //to use id feature the req.pa
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);   //install npm i ejs-mate and then require 
 app.use(express.static(path.join(__dirname,"/public")));  //to use the static file scuh as css 
+
+const sessionOptions = {
+    secret: "secretcode",  // Secret used to sign the session ID cookie
+    resave: false,         // Determines whether the session should be saved back to the session store, even if the session was never modified during the request
+    saveUninitialized: true ,// Determines whether a session should be created for an unauthenticated user. If set to true, a session will be created even if the user is not logged in.
+    cookie:{
+        expires:Date.now() + (7*24*60*60*1000),
+        maxAge :7*24*60*60*1000,
+        httpOnly:true,  //kept so that XSS attacks dont take place !
+    },
+};
+
+app.use(session(sessionOptions));
 
 
 
