@@ -9,6 +9,9 @@ const ExpressError = require("./ExpressError");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");   // for the authentication 
+const localStrategy = require("passport-local"); // for the authentication 
+const User= require("./models/user.js");
 
 
 
@@ -41,6 +44,8 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session() );
 
 
 /*________BASICS SETUP DONE !_____________________________________________________________________________*/
@@ -97,7 +102,7 @@ app.use((req, res, next) => {
     res.locals.error = req.flash("error");
     res.locals.updated = req.flash("updated");
     next();
-})
+});
 
 app.get("/listings", async (req, res, next) => { // allows to view all the lists available on the db 
 
@@ -221,18 +226,7 @@ app.post("/listings/:id/reviews", async (req, res, next) => {
     catch (err) {
         next(err);
     }
-    const express = require("express");
-    const app = express();
-    const mongoose = require("mongoose");
-    const Listing = require("./models/list.js")
-    const path = require("path");
-    const methodOverride = require("method-override");  //used for editing the requests and posting it again
-    const ejsMate = require("ejs-mate");   // reqruing from the webiste 
-    const ExpressError = require("./ExpressError");
-    const cookieParser = require("cookie-parser");
-    const session = require("express-session");
-    const flash= require("connect-flash");
-    
+
     
     
     main()
@@ -320,7 +314,7 @@ app.post("/listings/:id/reviews", async (req, res, next) => {
         res.locals.error = req.flash("error");
         res.locals.updated = req.flash("updated");
         next();
-    })
+    });
     
     app.get("/listings", async (req, res,next) => { // allows to view all the lists available on the db 
     
@@ -341,7 +335,7 @@ app.post("/listings/:id/reviews", async (req, res, next) => {
         res.render("new.ejs");
     });
     
-    //creating the post requesitng after submutting the lisitngs 
+    //creating the post request after submitting the lisitngs 
     
     app.post("/listings/", async (req, res,next) => {
     /* method 1    let {title ,description ,image , price ,location ,country } = req.body      //taking anything from thr html form contains the information part in the req.body   */
@@ -349,8 +343,7 @@ app.post("/listings/:id/reviews", async (req, res, next) => {
         const newListing = new Listing(req.body.listing);  // extracting the object from the html form of new.ejs then saving to db
         await newListing.save();
         req.flash("success","new Listings created !");
-        res.redirect("/listings");  //redirecting succcessfully after the information is stored 
-      
+        res.redirect("/listings");  //redirecting succcessfully after the information is stored    
       
     });
     
@@ -361,7 +354,10 @@ app.post("/listings/:id/reviews", async (req, res, next) => {
     
         try{
             let { id } = req.params;  //write the extended:true for this 
+
             const listing = await Listing.findById(id);  // finds the individual by id such as /listings/:id 
+
+
     
             if (!listing){
                 next(new ExpressError(500,"Hotels doesnt exists !"));
@@ -379,8 +375,7 @@ app.post("/listings/:id/reviews", async (req, res, next) => {
     
     app.get("/listings/:id/edit",async (req,res,next)=>{
     
-        try{/*  Express error inherits the properties from the default 
-        error class used in express    */
+        try{ /*  Express error inherits the properties from the default error class used in express    */
             let { id } = req.params;  //write the extended:true for this 
             const listing = await Listing.findById(id);  // finds the individual by id such as /listings/:id 
             res.render("edit.ejs",{listing});
@@ -456,20 +451,11 @@ app.post("/listings/:id/reviews", async (req, res, next) => {
     });
     
     
-    app.listen(3000, (req, res) => {
-        console.log("Running on port 3000");
-    });
+    
 });
-
-
-app.use((err, req, res, next) => {
-    let { status = 500, message = "Access denied " } = err;
-    res.render("error.ejs", { message });
-    // res.status(status).send(message);
-    //using middlewares for handling the error 
-});
-
-
 app.listen(3000, (req, res) => {
     console.log("Running on port 3000");
 });
+
+
+
