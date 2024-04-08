@@ -71,7 +71,7 @@ app.get("/greet", (req, res) => {
 // COOOKIE X-X-X-X-X-X-X-X-X-X--
 
 app.get("/", (req, res) => {
-    res.send("Welcome to Wanderlust !");
+    res.render("root.ejs");
 
 });
 

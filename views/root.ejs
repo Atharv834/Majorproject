@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello, World!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #333; /* Darker background color */
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .autotype {
+      color: #ff5733; /* Adjust color as desired */
+      font-size: 2em; /* Larger font size */
+      font-weight: bold; /* Bold font weight */
+    }
+
+    h2 {
+      color: white; /* Text color */
+      font-size: 1.5em; /* Larger font size */
+      font-weight: bold; /* Bold font weight */
+    }
+  </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="container">
+            <h1>This is <span class="autotype"></span></h1>
+          </div>
+          <br>
+          <div>
+            <h2>Visit /listings for more info </h2>
+          </div>
+        
+    </div>
+ 
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed(".autotype", {
+      strings: ["Wanderlust", "Website for listing hotels"],
+      typeSpeed: 150,
+      backSpeed: 150,
+      loop: true
+    });
+  </script>
+</body>
+</html>
